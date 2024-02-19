@@ -3,7 +3,7 @@ const User = require('./user.model')
 const bcrcypt = require("bcryptjs");
 
 const registerUser = async (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     try {
         const isExist = await User.findOne({ email: req.body.email });
         if (isExist) {
@@ -11,34 +11,32 @@ const registerUser = async (req, res) => {
                 message: `${req.body.email} is already Exist!`,
                 status: 403,
             });
-
         } else {
-
             const newUser = new User({
-                role: req.body.role,
                 fullName: req.body.fullName,
                 email: req.body.email,
-                password: bcrcypt.hashSync(req.body.password),
-                address: req.body.address,
-                phoneNumber: req.body.phoneNumber,
+                password: bcrcypt.hashSync(req.body.password, 10),
+                confirmPassword: bcrcypt.hashSync(req.body.password, 10),
             });
 
             const user = await newUser.save();
-            const token = await generateToken(user);
+            const token = generateToken(user);
 
             res.status(200).send({
-                message: "We have created account successfully",
+                message: "Account created successfully",
                 status: 200,
                 user,
                 accessToken: token,
             });
         }
     } catch (err) {
+        console.error(err.message);
         res.status(500).send({
-            message: err.message,
+            message: "Server error",
         });
     }
 };
+
 
 const loginUser = async (req, res) => {
     try {
@@ -50,13 +48,12 @@ const loginUser = async (req, res) => {
                 message: "User not found",
             });
         }
-
         if (user && bcrcypt.compareSync(req.body.password, user.password)) {
             return res.send({
                 success: true,
                 message: "Logged in successfully",
                 status: 200,
-                user
+                user    
             });
         } else {
             res.status(401).send({
@@ -72,6 +69,8 @@ const loginUser = async (req, res) => {
         });
     }
 };
+
+
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({})
