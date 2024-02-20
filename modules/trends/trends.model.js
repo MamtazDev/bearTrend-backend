@@ -7,27 +7,27 @@ const trendsScema = new mongoose.Schema(
     {
         image: {
             type: String,
-            require: false
+            required: false
         },
         title: {
             type: String,
-            require: false
+            required: true
         },
         description: {
             type: String,
-            require: false
+            required: true
         },
         trendsTopic: {
             type: trendsTopics,
-            require: false
+            required: true
         },
         trendsTimeSpan: {
             type: trendsTimeSpans,
-            require: false
+            required: true
         },
         like: {
             type: String,
-            require: false
+            required: false
         }
     },
     {
