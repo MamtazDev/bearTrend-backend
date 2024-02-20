@@ -1,5 +1,6 @@
 
 const userRoutes = require('./modules/user/user.routes')
+const trendsRoutes = require('./modules/trends/trends.routes')
 
 const express = require("express");
 const connectDB = require("./config/db");
@@ -22,6 +23,7 @@ connectDB();
 // Routes
 
 app.use("/api/user", userRoutes);
+app.use("/api/trends", trendsRoutes);
 
 
 // Testing API

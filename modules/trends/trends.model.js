@@ -1,16 +1,17 @@
 
 const mongoose = require('mongoose')
-const { trendsRTimeSpans, trendsTopics } = require('./trends.constant')
+
+const { trendsTimeSpans, trendsTopics } = require('./trends.constant')
 
 const trendsScema = new mongoose.Schema(
     {
         image: {
             type: String,
-            require: true
+            require: false
         },
         title: {
             type: String,
-            require: true
+            require: false
         },
         description: {
             type: String,
@@ -20,8 +21,8 @@ const trendsScema = new mongoose.Schema(
             type: trendsTopics,
             require: false
         },
-        trendsRTimeSpan: {
-            type: trendsRTimeSpans,
+        trendsTimeSpan: {
+            type: trendsTimeSpans,
             require: false
         },
         like: {
@@ -35,4 +36,5 @@ const trendsScema = new mongoose.Schema(
 )
 
 const Trends = mongoose.model('Trends', trendsScema)
+
 module.exports = Trends

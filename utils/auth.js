@@ -16,7 +16,6 @@ const generateToken = async (user) => {
     );
 };
 
-
 module.exports = {
     generateToken,
 };

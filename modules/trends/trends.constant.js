@@ -17,7 +17,7 @@ const trendsTopics = [
     "Sports"
 ]
 
-const trendsRTimeSpans = [
+const trendsTimeSpans = [
     "Current Snapshots",
     "Economic Pulse",
     "Signals of Tomorrow",
@@ -29,5 +29,5 @@ const trendsRTimeSpans = [
 
 module.exports = {
     trendsTopics,
-    trendsRTimeSpans
+    trendsTimeSpans
 }
