@@ -26,6 +26,10 @@ app.use("/api/user", userRoutes);
 app.use("/api/trends", trendsRoutes);
 
 
+
+// multer image upload 
+
+
 // Testing API
 
 app.get("/", (req, res) => {
