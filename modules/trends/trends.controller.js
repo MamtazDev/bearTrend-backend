@@ -2,6 +2,13 @@ const Trends = require("./trends.model");
 
 
 const addTrend = async (req, res) => {
+
+
+    if (req.file) {
+        req.body["image"] = req.file.path;
+        console.log("Images", req.file.path)
+
+    }
     try {
         const { image, title, description, trendsTopic, trendsTimeSpan, like } = req.body;
 

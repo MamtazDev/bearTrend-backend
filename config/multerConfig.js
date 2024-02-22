@@ -2,7 +2,6 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
-
 const isImageFile = function (file) {
   const allowedExtensions = [".png", ".jpg", ".jpeg"];
   const ext = path.extname(file.originalname);
