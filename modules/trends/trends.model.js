@@ -4,7 +4,10 @@ const mongoose = require('mongoose')
 const { trendsTimeSpans, trendsTopics } = require('./trends.constant')
 
 const trendsScema = new mongoose.Schema(
+
     {
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+
         image: {
             type: String,
             required: false
@@ -13,6 +16,7 @@ const trendsScema = new mongoose.Schema(
             type: String,
             required: true
         },
+
         description: {
             type: String,
             required: true
@@ -28,7 +32,7 @@ const trendsScema = new mongoose.Schema(
         like: {
             type: String,
             required: false,
-            default:0
+            default: 0
         }
     },
     {
