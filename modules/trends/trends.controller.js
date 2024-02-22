@@ -7,12 +7,11 @@ const addTrend = async (req, res) => {
     if (req.file) {
         req.body["image"] = req.file.path;
         console.log("Images", req.file.path)
-
     }
+    
     try {
         const { image, title, description, trendsTopic, trendsTimeSpan, like } = req.body;
 
-        // Split the trendsTopic string into an array of strings
         const trendsTopicArray = trendsTopic.split(',').map(topic => topic.trim());
 
         const userId = req.body.id;
