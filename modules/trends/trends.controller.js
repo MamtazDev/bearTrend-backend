@@ -38,8 +38,31 @@ const getAllTrends = async (req, res) => {
     }
 };
 
+const updateLikes = async (req, res) => {
+    try {
+        const { _id, like } = req.body;
+
+        // Find the existing trend post by its _id
+        let trend = await Trends.findById(_id);
+
+        if (!trend) {
+            return res.status(404).json({ message: 'Trend post not found' });
+        }
+        // Update the like field with the new value
+        trend.like = like;
+
+        // Save the updated trend post
+        const updatedTrend = await trend.save();
+
+        res.status(200).json(updatedTrend);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 module.exports = {
     addTrend,
-    getAllTrends
+    getAllTrends,
+    updateLikes
 };

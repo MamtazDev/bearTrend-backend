@@ -27,7 +27,8 @@ const trendsScema = new mongoose.Schema(
         },
         like: {
             type: String,
-            required: false
+            required: false,
+            default:0
         }
     },
     {
