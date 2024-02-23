@@ -34,13 +34,10 @@ app.use("/api/v1/uploads", express.static(path.join(__dirname, "/")));
 
 // multer image upload 
 
-
 // Testing API
 
 app.get("/", (req, res) => {
-
   res.send(`Api is working fine!`);
-
 });
 
 Server.listen(PORT, () => {
