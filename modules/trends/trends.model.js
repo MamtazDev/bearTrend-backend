@@ -29,11 +29,14 @@ const trendsScema = new mongoose.Schema(
             type: trendsTimeSpans,
             required: true
         },
+        
         like: {
-            type: String,
+            type: Number,
             required: false,
             default: 0
-        }
+        },
+
+        likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     },
     {
         timestamps: true,
@@ -41,5 +44,7 @@ const trendsScema = new mongoose.Schema(
 )
 
 const Trends = mongoose.model('Trends', trendsScema)
+
+
 
 module.exports = Trends

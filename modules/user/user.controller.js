@@ -2,8 +2,9 @@ const { generateToken } = require('../../utils/auth');
 const User = require('./user.model')
 const bcrcypt = require("bcryptjs");
 
+
 const registerUser = async (req, res) => {
-    console.log(req.body);
+    console.log(req.body)
     try {
         const isExist = await User.findOne({ email: req.body.email });
         if (isExist) {
@@ -20,23 +21,21 @@ const registerUser = async (req, res) => {
             });
 
             const user = await newUser.save();
-            const token = generateToken(user);
+            const token = await generateToken(user);
 
             res.status(200).send({
-                message: "Account created successfully",
+                message: "We have created account successfully",
                 status: 200,
                 user,
                 accessToken: token,
             });
         }
     } catch (err) {
-        console.error(err.message);
         res.status(500).send({
-            message: "Server error",
+            message: err.message,
         });
     }
 };
-
 
 const loginUser = async (req, res) => {
     try {
@@ -53,7 +52,7 @@ const loginUser = async (req, res) => {
                 success: true,
                 message: "Logged in successfully",
                 status: 200,
-                user    
+                user
             });
         } else {
             res.status(401).send({

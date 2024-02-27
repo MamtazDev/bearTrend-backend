@@ -25,8 +25,7 @@ connectDB();
 
 app.use("/api/user", userRoutes);
 app.use("/api/trends", trendsRoutes);
-
-
+app.use("/api/likes", trendsRoutes);
 
 // redirecting the upload folder
 app.use("/api/v1/uploads", express.static(path.join(__dirname, "/")));
