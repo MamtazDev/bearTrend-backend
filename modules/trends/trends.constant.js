@@ -1,4 +1,5 @@
 const trendsTopics = [
+    "All Topics",
     "Artificial Intelligence",
     "Technology",
     "Life and Health",
