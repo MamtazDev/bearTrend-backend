@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/postTrends', upload.single("image"), addTrend)
 router.get('/getAllTrends', getAllTrends)
-router.put('/updateLikes', updateLikes)
+router.put('/updateLikes/:id', updateLikes)
 
 module.exports = router;
